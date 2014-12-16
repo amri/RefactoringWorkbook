@@ -1,3 +1,5 @@
+package ch06_properties;
+
 import java.util.Properties;
 
 public class Props {

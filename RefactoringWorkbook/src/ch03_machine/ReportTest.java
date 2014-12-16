@@ -1,9 +1,12 @@
-import org.junit.Test;
+package ch03_machine;
+
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.io.StringWriter;
 import java.io.IOException;
+import java.io.StringWriter;
+import java.util.ArrayList;
+
+import org.junit.Test;
 
 public class ReportTest {
     @Test

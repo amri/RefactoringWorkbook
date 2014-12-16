@@ -1,3 +1,5 @@
+package ch03_machine;
+
 public class Robot {
     Machine location;
     String bin;

@@ -1,3 +1,5 @@
+package ch06_properties;
+
 
 public class MissingPropertiesException extends Exception {
 	private static final long serialVersionUID = 1L;

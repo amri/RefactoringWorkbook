@@ -1,3 +1,5 @@
+package ch11_csv;
+
 public class CsvWriter {
     public CsvWriter() {}
 

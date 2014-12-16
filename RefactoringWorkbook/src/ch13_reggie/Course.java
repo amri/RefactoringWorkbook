@@ -1,3 +1,5 @@
+package ch13_reggie;
+
 import java.sql.*;
 
 public class Course {

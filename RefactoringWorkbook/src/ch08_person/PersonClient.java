@@ -1,3 +1,5 @@
+package ch08_person;
+
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;

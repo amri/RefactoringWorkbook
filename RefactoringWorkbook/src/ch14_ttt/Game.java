@@ -1,3 +1,5 @@
+package ch14_ttt;
+
 public class Game {
 	public StringBuffer board;
 

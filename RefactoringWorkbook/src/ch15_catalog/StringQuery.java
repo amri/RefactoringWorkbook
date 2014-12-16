@@ -1,3 +1,5 @@
+package ch15_catalog;
+
 
 public class StringQuery extends Query {
 

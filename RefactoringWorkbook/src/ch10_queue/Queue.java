@@ -1,3 +1,5 @@
+package ch10_queue;
+
 import java.util.ArrayList;
 
 public class Queue {

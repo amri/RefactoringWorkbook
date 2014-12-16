@@ -1,3 +1,5 @@
+package ch16_pg;
+
 import java.awt.*;
 import javax.swing.*;
 

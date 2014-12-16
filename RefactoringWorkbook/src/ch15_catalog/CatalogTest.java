@@ -1,3 +1,5 @@
+package ch15_catalog;
+
 import static org.junit.Assert.*;
 
 import java.util.List;

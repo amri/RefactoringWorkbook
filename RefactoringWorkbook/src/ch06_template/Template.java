@@ -1,3 +1,5 @@
+package ch06_template;
+
 import java.io.PrintStream;
 
 public class Template {

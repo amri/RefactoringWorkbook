@@ -1,5 +1,9 @@
-import org.junit.Test;
+package ch03_machine;
+
 import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 
 public class RobotTest {
 	@Test
