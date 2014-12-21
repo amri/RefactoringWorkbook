@@ -11,32 +11,33 @@ import org.junit.Test;
 public class ReportTest {
     @Test
     public void testReport() throws IOException {
-        ArrayList<Machine> line = new ArrayList<Machine>();
-        line.add(new Machine("mixer", "left"));
+        ArrayList<Machine> machines = new ArrayList<Machine>();
+        machines.add(new Machine("mixer", "left"));
 
         Machine extruder = new Machine("extruder", "center");
         extruder.put("paste");
-        line.add(extruder);
+        machines.add(extruder);
 
         Machine oven = new Machine("oven", "right");
         oven.put("chips");
-        line.add(oven);
+        machines.add(oven);
 
         Robot robot = new Robot();
         robot.moveTo(extruder);
         robot.pick();
 
-        StringWriter out = new StringWriter();
-        Report.report(out, line, robot);
+        StringWriter writer = new StringWriter();
+        Report.report(writer, machines, robot);
 
         String expected =
             "FACTORY REPORT\n" +
-            "Machine mixer\nMachine extruder\n" +
-	    "Machine oven bin=chips\n\n" +
+            "Machine mixer\n"+
+            "Machine extruder\n" +
+            "Machine oven bin=chips\n\n" +
             "Robot location=extruder bin=paste\n" +
             "========\n";
 
-        assertEquals(expected, out.toString());
+        assertEquals(expected, writer.toString());
     }
 }
 

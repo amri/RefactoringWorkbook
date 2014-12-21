@@ -4,32 +4,44 @@ import java.util.*;
 import java.io.*;
 
 public class Report {
-    public static void report(Writer out, List<Machine> machines, Robot robot)
-            throws IOException 
-    {
-        out.write("FACTORY REPORT\n");
+	public static void report(Writer writer, List<Machine> machines, Robot robot)
+			throws IOException {
 
-        Iterator<Machine> line = machines.iterator();
-        while (line.hasNext()) {
-            Machine machine = (Machine) line.next();
-            out.write("Machine " + machine.name());
+		writer.write("FACTORY REPORT\n");
 
-            if (machine.bin() != null)
-                out.write(" bin=" + machine.bin());
+		printAllMachines(writer, machines);
+		printAllRobot(writer, robot);
+		
+		writer.write("========\n");
+	}
 
-            out.write("\n");
-        }
-        out.write("\n");
+	private static void printAllRobot(Writer writer, Robot robot)
+			throws IOException {
+		writer.write("Robot");
 
-        out.write("Robot");
-        if (robot.location() != null)
-            out.write(" location=" + robot.location().name());
+		if (robot.location() != null)
+			writer.write(" location=" + robot.location().name());
 
-        if (robot.bin() != null)
-            out.write(" bin=" + robot.bin());
+		if (robot.bin() != null)
+			writer.write(" bin=" + robot.bin());
 
-        out.write("\n");
+		writer.write("\n");
 
-        out.write("========\n");
-    }
+	}
+
+	private static void printAllMachines(Writer writer, List<Machine> machines)
+			throws IOException {
+
+		Iterator<Machine> line = machines.iterator();
+		while (line.hasNext()) {
+			Machine machine = (Machine) line.next();
+			writer.write("Machine " + machine.name());
+
+			if (machine.bin() != null)
+				writer.write(" bin=" + machine.bin());
+
+			writer.write("\n");
+		}
+		writer.write("\n");
+	}
 }
