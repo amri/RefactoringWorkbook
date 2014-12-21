@@ -1,7 +1,8 @@
 package ch03_matcher;
 
 import org.junit.Test;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.Assert.*;
 
 public class MatcherTest {
 	@Test
@@ -14,12 +15,12 @@ public class MatcherTest {
 
         int[] actual = new int[] {12, 55, 25, 110};
 
-        assertTrue(matcher.match(expected, actual, clipLimit, delta));
+        assertEquals(true, matcher.match(expected, actual, clipLimit, delta));
 
-        actual = new int[] {10, 60, 30, 98};
-        assertTrue(!matcher.match(expected, actual, clipLimit, delta));
+        actual = new int[] {10, 55, 30, 98};
+        assertEquals(true, matcher.match(expected, actual, clipLimit, delta));
 
         actual = new int[] {10, 50, 30};
-        assertTrue(!matcher.match(expected, actual, clipLimit, delta));
+        assertEquals(true,matcher.match(expected, actual, clipLimit, delta));
     }
 }
