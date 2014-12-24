@@ -3,6 +3,9 @@ package ch06_properties;
 import java.util.Properties;
 
 public class Props {
+	private static final String DEPARTURE = "departure";
+	private static final String DURATION = "duration";
+	private static final String INTERVAL = "interval";
 	int checkInterval;
 	int monitorTime;
 	int departureOffset;
@@ -11,42 +14,36 @@ public class Props {
 		String valueString;
 		int value;
 
-		valueString = props.getProperty("interval");
-		if (valueString == null) {
-			throw new MissingPropertiesException("monitor interval");
-		}
-		value = Integer.parseInt(valueString);
-
-		if (value <= 0) {
-			throw new MissingPropertiesException("monitor interval > 0");
-		}
+		value = getProperty(props, INTERVAL);
 		checkInterval = value;
 
-		valueString = props.getProperty("duration");
-		if (valueString == null) {
-			throw new MissingPropertiesException("duration");
-		}
-		value = Integer.parseInt(valueString);
-		if (value <= 0) {
-			throw new MissingPropertiesException("duration > 0");
-		}
-		if ((value % checkInterval) != 0) {
-			throw new MissingPropertiesException("duration % checkInterval");
-		}
+		value = getProperty(props, DURATION);
+		checkWithInterval(value, DURATION);
 		monitorTime = value;
 
-		valueString = props.getProperty("departure");
+		value = getProperty(props, DEPARTURE);
+		checkWithInterval(value, DEPARTURE);
+		departureOffset = value;
+	}
+
+	private void checkWithInterval(int value, String propertyName) throws MissingPropertiesException {
+		if ((value % checkInterval) != 0) {
+			throw new MissingPropertiesException(propertyName+" % checkInterval");
+		}
+	}
+
+	private int getProperty(Properties props, String propertyName) throws MissingPropertiesException {
+		String valueString;
+		int value;
+		valueString = props.getProperty(propertyName);
 		if (valueString == null) {
-			throw new MissingPropertiesException("departure offset");
+			throw new MissingPropertiesException(propertyName);
 		}
 		value = Integer.parseInt(valueString);
 		if (value <= 0) {
-			throw new MissingPropertiesException("departure > 0");
+			throw new MissingPropertiesException(propertyName+" > 0");
 		}
-		if ((value % checkInterval) != 0) {
-			throw new MissingPropertiesException("departure % checkInterval");
-		}
-		departureOffset = value;
+		return value;
 	}
 	
 	// ....
