@@ -10,7 +10,7 @@ public class IntroduceNullObject {
 		
 		
 		
-		if(customer == null) plan = BillingPlan.basic();
+		if(customer.isNull()) plan = BillingPlan.basic();
 		else plan = customer.getPlan();
 		
 		return plan;
@@ -19,10 +19,22 @@ public class IntroduceNullObject {
 	public class Customer {
 		
 		public Plan getPlan() {
-			// TODO Auto-generated method stub
-			return null;
+			return new Plan();
 		}
 		
+		protected Customer() {}
+		
+		public boolean isNull()
+		{
+			return false;
+		}
+	}
+	
+	public class NullCustomer extends Customer {
+		public boolean isNull()
+		{
+			return true;
+		}
 	}
 	
 	public static class BillingPlan {
